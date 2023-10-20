@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <head>
+        <title>MAIN MENU</title>
+
+    </head>
+    <body>
+        <div    style="text-align: center;">
+            <h1 style="font-size: 60px; color: #FF0000;">MENU PRINCIPLA</h1>
+        </div>
+        <div>
+            <h:form>
+                <p:outputLabel value="#{bk_Inicio.mensaje}"/>
+                <br></br>
+                <p:panelGrid   columns="2" >
+                    <p:outputLabel value="AUTORES"/>
+                    <p:commandButton id="btnAutores" value="IR" action="Autores.xhtml"/>
+                    
+                </p:panelGrid>
+            </h:form>
+        </div>
+    </body>
+</html>

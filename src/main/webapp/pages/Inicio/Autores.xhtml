@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>AUTORES</title>
+        <h:outputScript name="script.js" library="js"/>
+        <h:outputStylesheet name="default.css" library="css"/> 
+        <h:outputStylesheet name="theme.css" library="css"/>
+
+    </head>
+    <body>
+        <div    style="text-align: center;">
+            <h1 style="font-size: 80px; color: #228B22;">
+                <p:outputLabel  value="AUTORES" class="contenedorFormulario"/>
+            </h1></div>
+                <br></br>
+                <div    class="contenedorFormulario">
+                    <h:form id="formulario1" class="formulario">
+                        <p:panelGrid    columns="2">
+                            <p:outputLabel value="Nombre" />
+                            <p:inputText id="txtNombre" value="#{bk_Inicio.dato2}" />
+                            
+                            <p:commandButton id="btInsertar" value="Agregar" action="#{bk_Inicio.accionesAutores(1)}" update="tb1Lista, formulario1" disabled="#{bk_Inicio.band}"/>
+
+                              <p:commandButton id="btActualizar" value="Actualizar" action="#{bk_Inicio.accionesAutores(2)}" update="tb1Lista, formulario1" />
+                           
+                                <p:commandButton id="btEliminar" value="Eliminar" action="#{bk_Inicio.accionesAutores(3)}" update="tb1Lista, formulario1" />
+                                
+                                <p:commandButton id="btnInicio" value="Inicio" action="InicioUI.xml"/>
+                                
+                        </p:panelGrid>
+                    </h:form>                              
+                </div>
+                  <br></br>
+                  <p:dataTable id="tb1Lista" value="#{bk_Inicio.autoresss}" var="item" selection="#{bk_Inicio.autores}" rowKey="#{item.id_autor}" lazy="true" selectionMode="single">
+                      <p:ajax event="rowSelect" listener="#{bk_Inicio.autorseleccionado}" update="formulario1"/>
+                      <p:ajax event="rowUnselect" listener="#{bk_Inicio.onRowUnSelect}" update="formulario1" />
+                      
+                      <p:column>
+                          <f:facet name="header">
+                            ID
+                      </f:facet>
+                          <p:outputLabel value="#{item.id_autor}" />
+                          
+                      </p:column>
+
+                      <p:column>
+                          <f:facet name="header">
+                              nombre
+                          </f:facet>
+                          <p:outputLabel value="#{item.nombre_autor}" />
+
+                      </p:column>
+                      
+                  </p:dataTable>  
+    </body>
+</html>
